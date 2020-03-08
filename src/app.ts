@@ -9,6 +9,9 @@ import helmet from "helmet";
 import vars from "./config/vars";
 import * as mongoose from './config/mongoose';
 
+// api routes
+import routes from './api/routes/v1';
+
 // open mongoose connection
 mongoose.connect();
 
@@ -39,7 +42,7 @@ app.use(cors());
 app.get("/status", (req: Request, res: Response, next: NextFunction) => { res.send("Ok") });
 
 // mount api v1 routes
-// app.use('/api/v1', routes);
+app.use('/api/v1', routes);
 
 // if error is not an instanceOf APIError, convert it.
 // app.use(error.converter);
