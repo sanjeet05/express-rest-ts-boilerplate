@@ -7,8 +7,7 @@ import cors from "cors";
 import helmet from "helmet";
 
 import vars from "./config/vars";
-
-const mongoose = require('./config/mongoose');
+import * as mongoose from './config/mongoose';
 
 // open mongoose connection
 mongoose.connect();
@@ -38,6 +37,18 @@ app.use(cors());
 
 // API Endpoints
 app.get("/status", (req: Request, res: Response, next: NextFunction) => { res.send("Ok") });
+
+// mount api v1 routes
+// app.use('/api/v1', routes);
+
+// if error is not an instanceOf APIError, convert it.
+// app.use(error.converter);
+
+// catch 404 and forward to error handler
+// app.use(error.notFound);
+
+// error handler, send stacktrace only during development
+// app.use(error.handler);
 
 // listen to requests
 app.listen(vars.port, () => console.info(`server started on port ${vars.port} (${vars.env})`));

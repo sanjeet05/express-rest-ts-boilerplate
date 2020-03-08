@@ -19,8 +19,9 @@ if (vars.env === 'development') {
 * @returns {object} Mongoose connection
 * @public
 */
-exports.connect = async () => {
+export const connect = async () => {
     const uri: any = vars.mongo.uri;
-    await mongoose.connect(uri);
+    await mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
     return mongoose.connection;
 };
+
